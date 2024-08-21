@@ -34,11 +34,6 @@ function loadPlanetData() {
         reject(err);
       })
       .on("end", () => {
-        console.log(
-          habitablePlanets.map((result) => {
-            return result["kepler_name"];
-          })
-        );
         resolve();
       });
   });
