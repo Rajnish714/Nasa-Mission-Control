@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-const {getAllLanuches} = require("../../modules/lanuches.module");
-
-function httpGetAllLanuches(req, res) {
-  return res.json(getAllLanuches());
-}
-
-module.exports = {httpGetAllLanuches};
-=======
 const {getAllLanuches, addNewLaunch} = require("../../modules/lanuches.module");
 
 function httpGetAllLanuches(req, res) {
@@ -39,4 +30,3 @@ function httpAddNewLaunch(req, res) {
 }
 
 module.exports = {httpGetAllLanuches, httpAddNewLaunch};
->>>>>>> master

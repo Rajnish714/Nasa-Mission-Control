@@ -29,16 +29,7 @@ function addNewLaunch(launch) {
   );
 }
 
-function getAllLanuches() {
-  return Array.from(launches.values());
-}
-
 module.exports = {
-<<<<<<< HEAD
-  launches,
-  getAllLanuches,
-=======
   getAllLanuches,
   addNewLaunch,
->>>>>>> master
 };
