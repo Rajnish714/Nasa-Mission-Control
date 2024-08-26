@@ -1,7 +1,7 @@
-const {launches} = require("../../modules/lanuches.module");
+const {getAllLanuches} = require("../../modules/lanuches.module");
 
-function getAllLanuches(req, res) {
-  return res.json(Array.from(launches.values()));
+function httpGetAllLanuches(req, res) {
+  return res.json(getAllLanuches());
 }
 
-module.exports = {getAllLanuches};
+module.exports = {httpGetAllLanuches};
