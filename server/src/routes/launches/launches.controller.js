@@ -1,4 +1,9 @@
-const {getAllLanuches, addNewLaunch} = require("../../modules/lanuches.module");
+const {
+  getAllLanuches,
+  addNewLaunch,
+  abortLaunch,
+  launchExist,
+} = require("../../modules/lanuches.module");
 
 function httpGetAllLanuches(req, res) {
   return res.status(200).json(getAllLanuches());
@@ -6,7 +11,7 @@ function httpGetAllLanuches(req, res) {
 
 function httpAddNewLaunch(req, res) {
   launch = req.body;
-  console.log(req.body, "server check");
+
   if (
     !launch.mission ||
     !launch.rocket ||
@@ -29,4 +34,13 @@ function httpAddNewLaunch(req, res) {
   return res.status(201).json(launch);
 }
 
-module.exports = {httpGetAllLanuches, httpAddNewLaunch};
+function httpAbortLaunch(req, res) {
+  const launchId = Number(req.params.id);
+
+  if (!launchExist(launchId)) {
+    return res.status(404).json({error: "launch not found"});
+  }
+  return res.status(200).json(abortLaunch(launchId));
+}
+
+module.exports = {httpGetAllLanuches, httpAddNewLaunch, httpAbortLaunch};
