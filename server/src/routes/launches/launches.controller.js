@@ -25,8 +25,8 @@ function httpAddNewLaunch(req, res) {
 
   launch.launchDate = new Date(launch.launchDate);
   if (isNaN(launch.launchDate)) {
-    return res.status(401).json({
-      error: "launch date not available",
+    return res.status(400).json({
+      error: "launch date is invalid",
     });
   }
 
