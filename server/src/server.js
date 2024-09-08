@@ -2,7 +2,7 @@ const http = require("http");
 const app = require("./app");
 const mongoose = require("mongoose");
 const MONGO_URL =
-  "mongodb://localhost:27017/nasa/?readPreference=primary&ssl=false&directConnection=true";
+  "mongodb://localhost:27017/nasa-api?readPreference=primary&ssl=false&directConnection=true";
 const {loadPlanetData} = require("./modules/planets.modules");
 
 const server = http.createServer(app);
