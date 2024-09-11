@@ -5,11 +5,11 @@ const {
   launchExist,
 } = require("../../modules/lanuches.module");
 
-function httpGetAllLanuches(req, res) {
-  return res.status(200).json(getAllLanuches());
+async function httpGetAllLanuches(req, res) {
+  return res.status(200).json(await getAllLanuches());
 }
 
-function httpAddNewLaunch(req, res) {
+async function httpAddNewLaunch(req, res) {
   launch = req.body;
 
   if (
@@ -30,7 +30,7 @@ function httpAddNewLaunch(req, res) {
     });
   }
 
-  addNewLaunch(launch);
+  await addNewLaunch(launch);
   return res.status(201).json(launch);
 }
 
