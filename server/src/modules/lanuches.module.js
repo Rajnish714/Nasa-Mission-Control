@@ -54,7 +54,12 @@ async function addNewLaunch(launch) {
         flightNumber: launch.flightNumber,
       },
 
-      launch,
+      Object.assign(launch, {
+        flightNumber: latestFlightNumber,
+        customer: ["Rajnish-Sharma", "Nasa"],
+        upcoming: true,
+        success: true,
+      }),
 
       {upsert: true}
     );
