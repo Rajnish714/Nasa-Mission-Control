@@ -64,6 +64,7 @@ async function addNewLaunch(launch) {
       {upsert: true}
     );
   }
+  //todo:remove this launches.set
   // launches.set(
   //   latestFlightNumber,
   //   Object.assign(launch, {
