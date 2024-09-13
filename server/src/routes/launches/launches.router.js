@@ -1,13 +1,13 @@
 const express = require("express");
 const {
-  httpGetAllLanuches,
+  httpGetAllLaunches,
   httpAddNewLaunch,
   httpAbortLaunch,
 } = require("./launches.controller");
 
 const launchesRouter = express.Router();
 
-launchesRouter.get("/", httpGetAllLanuches);
+launchesRouter.get("/", httpGetAllLaunches);
 launchesRouter.post("/", httpAddNewLaunch);
 launchesRouter.delete("/:id", httpAbortLaunch);
 

@@ -1,12 +1,12 @@
 const {
-  getAllLanuches,
+  getAllLaunches,
   addNewLaunch,
   abortLaunch,
   launchExist,
-} = require("../../modules/lanuches.module");
+} = require("../../modules/launches.module");
 
-async function httpGetAllLanuches(req, res) {
-  return res.status(200).json(await getAllLanuches());
+async function httpGetAllLaunches(req, res) {
+  return res.status(200).json(await getAllLaunches());
 }
 
 async function httpAddNewLaunch(req, res) {
@@ -43,4 +43,4 @@ function httpAbortLaunch(req, res) {
   return res.status(200).json(abortLaunch(launchId));
 }
 
-module.exports = {httpGetAllLanuches, httpAddNewLaunch, httpAbortLaunch};
+module.exports = {httpGetAllLaunches, httpAddNewLaunch, httpAbortLaunch};
