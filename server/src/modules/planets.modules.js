@@ -43,7 +43,7 @@ function loadPlanetData() {
 
 async function savePlanets(planet) {
   try {
-    await planets.updateOne(
+    await planets.findOneAndUpdate(
       {
         keplerName: planet.kepler_name,
       },
