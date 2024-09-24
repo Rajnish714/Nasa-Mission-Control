@@ -42,7 +42,7 @@ async function populateLaunch() {
   for (const launchDoc of launchDocs) {
     const payloads = launchDoc["payloads"];
     const customers = payloads.flatMap((payload) => {
-      return payload;
+      return payload["customers"];
     });
     const launch = {
       flightNumber: launchDoc["flight_number"],
@@ -53,8 +53,9 @@ async function populateLaunch() {
       success: launchDoc["success"],
       customers,
     };
+    await saveLaunch(launch);
+    console.log(`${launch.flightNumber},${launch.mission}`);
   }
-  console.log(`${launch.flightNumber},${launch.mission}`);
 }
 
 async function loadLaunchData() {
@@ -79,12 +80,6 @@ async function launchExist(launchId) {
 }
 
 async function saveLaunch(launch) {
-  const planet = await planets.findOne({keplerName: launch.target});
-
-  if (!planet) {
-    throw new Error("no matching planet found");
-  }
-
   await launchesDatabase.findOneAndUpdate(
     {
       flightNumber: launch.flightNumber,
@@ -112,6 +107,12 @@ async function getLatestFlightNumber() {
 }
 
 async function addNewLaunch(launch) {
+  const planet = await planets.findOne({keplerName: launch.target});
+
+  if (!planet) {
+    throw new Error("no matching planet found");
+  }
+
   const newFlightNumber = (await getLatestFlightNumber()) + 1;
 
   const newLaunch = Object.assign(launch, {
