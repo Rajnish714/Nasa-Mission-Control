@@ -1,12 +1,17 @@
-const {getAllLanuches, addNewLaunch} = require("../../modules/lanuches.module");
+const {
+  getAllLaunches,
+  addNewLaunch,
+  abortLaunch,
+  launchExist,
+} = require("../../modules/launches.module");
 
-function httpGetAllLanuches(req, res) {
-  return res.status(200).json(getAllLanuches());
+async function httpGetAllLaunches(req, res) {
+  return res.status(200).json(await getAllLaunches());
 }
 
-function httpAddNewLaunch(req, res) {
+async function httpAddNewLaunch(req, res) {
   launch = req.body;
-  console.log(req.body, "server check");
+
   if (
     !launch.mission ||
     !launch.rocket ||
@@ -20,13 +25,24 @@ function httpAddNewLaunch(req, res) {
 
   launch.launchDate = new Date(launch.launchDate);
   if (isNaN(launch.launchDate)) {
-    return res.status(401).json({
-      error: "launch date not valid",
+    return res.status(400).json({
+      error: "launch date is invalid",
     });
   }
 
-  addNewLaunch(launch);
+  await addNewLaunch(launch);
   return res.status(201).json(launch);
 }
 
-module.exports = {httpGetAllLanuches, httpAddNewLaunch};
+async function httpAbortLaunch(req, res) {
+  const launchId = Number(req.params.id);
+  const launchExistById = await launchExist(launchId);
+
+  if (!launchExistById) {
+    return res.status(404).json({error: "launch not found"});
+  }
+  const abort = await abortLaunch(launchId);
+  return res.status(200).json(abort);
+}
+
+module.exports = {httpGetAllLaunches, httpAddNewLaunch, httpAbortLaunch};
