@@ -1,6 +1,7 @@
 const app = require("../../app");
 const request = require("supertest");
 const {mongoConnect, mongoDisconnect} = require("../../services/mongo");
+const {loadPlanetsData} = require("../../models/planets.model");
 
 const completeLaunchData = {
   mission: "Kepler Exploration X",
@@ -25,6 +26,7 @@ const launchDateWithInvalidDate = {
 describe("test all Routes", () => {
   beforeAll(async () => {
     await mongoConnect();
+    await loadPlanetsData();
   });
 
   afterAll(async () => {
