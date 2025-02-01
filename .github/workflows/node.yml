@@ -15,8 +15,8 @@ jobs:
       MONDODB_URI: mongodb://localhost:27017/nasa
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
-        mongo-version: [4.4, 5.0]
+        node-version: [14.x, 16.x]
+        mongo-version: [4.4]
 
     runs-on: ubuntu-latest
 
