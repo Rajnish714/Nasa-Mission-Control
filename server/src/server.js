@@ -3,16 +3,16 @@ const app = require("./app");
 const {mongoConnect} = require("./services/mongo");
 const {loadPlanetData} = require("./modules/planets.modules");
 const {loadLaunchData} = require("./modules/launches.module");
-
+import 'dotenv/config'
 const server = http.createServer(app);
-
+const PORT=process.env.PORT||8000
 async function startServer() {
   await mongoConnect();
 
   await loadPlanetData();
   await loadLaunchData();
-  server.listen(8000, () => {
-    console.log(`server has started on ${8000}...`);
+  server.listen(PORT, () => {
+    console.log(`server has started on ${PORT}...`);
   });
 }
 
