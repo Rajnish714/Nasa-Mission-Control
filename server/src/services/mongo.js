@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const MONGO_URL =  "mongodb://localhost:27017/nasa-api?readPreference=primary&ssl=false&directConnection=true";
+const MONGO_URL =  process.env.MONGO_URL
 
 
 
