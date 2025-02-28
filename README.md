@@ -33,3 +33,36 @@ This project uses **Arwes**, a cyberpunk-style React UI framework, to give it a 
 ```sh
 git clone https://github.com/Rajnish714/nasa-mission-control.git
 cd nasa-mission-control
+
+2️⃣ Set Up Your Own MongoDB Atlas
+Since this project uses a cloud database, you’ll need to set up MongoDB Atlas:
+
+Sign up for MongoDB Atlas
+Create a cluster & get your connection string
+In the project root, create a .env file and add:
+MONGO_URI=your-mongodb-connection-string
+(Make sure not to share this connection string!)
+
+3️⃣ Install Dependencies
+
+npm run install
+
+4️⃣ Start the Project
+
+npm run watch or npm run deploy  # Starts the backend & frontend.
+
+5️⃣ Open in Your Browser
+👉 http://localhost:8000
+
+🤝 Want to Contribute?
+🚀 You’re more than welcome to contribute! Here’s how you can help:
+
+Fork this repo (Click the "Fork" button at the top).
+Create a new branch (git checkout -b my-feature).
+Make your awesome changes.
+Commit your changes (git commit -m "Added a cool feature").
+Push to your fork (git push origin my-feature).
+Open a Pull Request (I’ll check it out ASAP 🚀).
+
+
+
