@@ -37,11 +37,11 @@ cd nasa-mission-control
 2️⃣ Set Up Your Own MongoDB Atlas
 Since this project uses a cloud database, you’ll need to set up MongoDB Atlas:
 
-Sign up for MongoDB Atlas
-Create a cluster & get your connection string
-In the project root, create a .env file and add:
-MONGO_URI=your-mongodb-connection-string
-(Make sure not to share this connection string!)
+  Sign up for MongoDB Atlas
+  Create a cluster & get your connection string
+  In the project root, create a .env file and add:
+  MONGO_URI=your-mongodb-connection-string
+  (Make sure not to share this connection string!)
 
 3️⃣ Install Dependencies
 
