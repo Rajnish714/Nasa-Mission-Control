@@ -1,0 +1,46 @@
+{
+    "admin": {
+        "disabled": false,
+        "listen": "0.0.0.0:2019",
+        "enforce_origin": false,
+        "origins": [
+            ""
+        ],
+        "config": {
+            "persist": true
+        }
+    },
+    "apps": {
+        "http": {
+            "servers": {
+                "nasa-server": {
+                    "@id": "nasa-server",
+                    "listen": [
+                        ":443"
+                    ],
+                    "routes": [
+                        {
+                            "handle": [
+                                {
+                                    "handler": "reverse_proxy",
+                                    "upstreams": [
+                                        {
+                                            "dial": "nhp-server:8000"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "match": [
+                                {
+                                    "host": [
+                                        "ec2-15-207-111-155.ap-south-1.compute.amazonaws.com"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
